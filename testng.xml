@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Voicemailtel">
+    <listeners>
+        <listener class-name="org.voicemailtel.meet.framework.listener.ScreenShortListener"></listener>
+    </listeners>
+    <test name="joinmeeting">
+        <classes>
+            <class name="org.voicemailtel.meet.framework.testcases.JoinMeetingTest"></class>
+        </classes>
+    </test>
+</suite>
