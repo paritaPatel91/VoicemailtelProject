@@ -1,9 +1,13 @@
 package org.voicemailtel.meet.framework.pages;
 
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+
+import java.io.File;
 
 public class JoinMeeting {
     private WebDriver driver;
@@ -132,6 +136,9 @@ public class JoinMeeting {
         this.clickOnJoinMeetingButton.click();
         return new JoinMeeting(driver);
     }
+
+
+
 
 
 }

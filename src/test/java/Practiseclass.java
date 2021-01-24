@@ -1,7 +1,10 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
@@ -21,13 +24,32 @@ public class Practiseclass {
     @Test
     public void testdata() throws InterruptedException {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.get("https://meet.voicemailtel.com/dashboard/schedule");
+        driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
+        driver.get("https://meet.voicemailtel.com");
 
-        Actions actions = new Actions(driver);
-        actions.moveToElement(driver.findElement(By.xpath( "//button[@id='scheduleAMeeting']"))).click().build().perform();
+
+        driver.findElement(By.xpath("//a[@class='mat-focus-indicator meetings-menu-item mat-menu-item ng-star-inserted']")).click();
         Thread.sleep(2000);
-        actions.moveToElement(driver.findElement(By.xpath(" \"/html/body/app-root/div/div/app-dashboard/div/div/div[2]/div[2]/app-schedule-meeting/div/form/div[1]/nz-tree-select/div\")"))).click().build().perform();
+
+        driver.findElement(By.id("mat-input-13"))
+                .sendKeys("rosyjames1299@gmail.com");
+        // Thread.sleep(2000);
+
+        driver.findElement(By.id("mat-input-14"))
+                .sendKeys("Rosy12345$");
+        //Thread.sleep(3000);
+
+        WebElement element = driver.findElement(By.xpath("button[@class='submit-button orange-button full-width']"));
         Thread.sleep(2000);
+
+        clickElementByJS(element,driver);
+
+
+    }
+    public static void clickElementByJS(WebElement element, WebDriver driver) {
+        JavascriptExecutor js =((JavascriptExecutor) driver);
+        js.executeScript("arguments[0].click();",element);
+
     }
 
     @AfterSuite

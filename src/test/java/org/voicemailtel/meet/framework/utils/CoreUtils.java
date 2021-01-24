@@ -43,7 +43,6 @@ public class CoreUtils {
         }
 
         if (StatusEnum.FAIL == statusEnum) {
-            createDirs(Paths.get(AppConfig.getProperties("fail.dir")));
              fileName = generateFileName(testcaseName);
             File memoryFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             try {
@@ -64,6 +63,17 @@ public class CoreUtils {
         return testCaseName +"_"+dateFormat.format(new Date())+AppConfig.getProperties("extension");
 
 
+    }
+    public static String getReportFileName(){
+            createDirs(Paths.get(AppConfig.getProperties("report.dir")));
+        String pattern = AppConfig.getProperties("pattern");
+        String[] s = pattern.split("_");
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat(s[1]);
+
+        String fileName = "RunReport_" +"_"+dateFormat.format(new Date())+AppConfig.getProperties("report.extension");
+       // return  Paths.get(AppConfig.getProperties("report.dir"),fileName).toString();
+        return fileName;
     }
 
 }
